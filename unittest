@@ -1,0 +1,88 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author mali.bscs13seecs
+ */
+public class JavaApplication1Test {
+    
+    public JavaApplication1Test() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
+
+    /**
+     * Test of getmatrices method, of class JavaApplication1.
+     */
+   
+
+    /**
+     * Test of itrmultiplyAB method, of class JavaApplication1.
+     */
+    @Test
+    public void testItrmultiplyAB() {
+        System.out.println("itrmultiplyAB");
+        int[][] a = {{2,2},{2,2}};
+        int[][] b = {{3,3},{3,3}};
+        int[][] c = {{12,12},{12,12}};
+        
+        JavaApplication1.A= a;
+        JavaApplication1.B= b;
+        JavaApplication1.m= 2;
+        JavaApplication1.n= 2;
+        JavaApplication1.x= 2;
+        JavaApplication1.y= 2;
+        int[][] k= JavaApplication1.itrmultiplyAB();
+        Assert.assertArrayEquals(c, k);
+        // TODO review the generated test code and remove the default call to fail.
+       
+    }
+
+    /**
+     * Test of sttmultiplyAB method, of class JavaApplication1.
+     */
+    @Test
+    public void testSttmultiplyAB() {
+        System.out.println("sttmultiplyAB");
+        int[][] a = {{2,2,2,2},{2,2,2,2},{2,2,2,2},{2,2,2,2}};
+        int[][] b = {{3,3,3,3},{3,3,3,3},{3,3,3,3},{3,3,3,3}};
+        int[][] c = {{24,24,24,24},{24,24,24,24},{24,24,24,24},{24,24,24,24}};
+        int[][] k=JavaApplication1.sttmultiplyAB(a,b,4);
+        Assert.assertArrayEquals(c, k);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of main method, of class JavaApplication1.
+     */
+  
+    
+}
