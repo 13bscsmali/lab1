@@ -1,0 +1,214 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
+import java.util.Scanner;
+
+/**
+ *
+ * @author mali.bscs13seecs
+ */
+public class JavaApplication1 {
+
+    public static int A[][];
+    public static int B[][];
+    public static int m,n,x,y = 0;
+    public static int C[][];
+    public static void getmatrices(){
+    Scanner inp = new Scanner(System.in);
+    System.out.println("Enter the number of rows of matrix A:");    
+    m = inp.nextInt();
+    System.out.println("Enter the number of coloumns of matrix A:");    
+    n = inp.nextInt();
+    System.out.println("Enter the values:");
+    String l;
+    A= new int [m][n];
+    for(int i=0; i<m; i++)
+    { for(int j=0 ; j<n ;j++)
+        {l="row " + i +" col " + j +" :";
+         System.out.println(l);  
+        A[i][j]= inp.nextInt();
+        }   
+       }   
+    
+    System.out.println("Enter the number of rows of matrix B:");    
+    x = inp.nextInt();
+    System.out.println("Enter the number of coloumns of matrix B:");    
+    y = inp.nextInt();
+    System.out.println("Enter the values:");
+    
+    B= new int [x][y];
+    for(int i=0; i<x; i++)
+    { for(int j=0 ; j<y ;j++)
+        {l="row " + i +" col " + j +" :";
+         System.out.println(l);  
+        B[i][j]= inp.nextInt();
+        }   
+       }  
+    }
+    public static int[][] itrmultiplyAB(){
+        
+        if (m != y)
+        {
+            System.out.println("these matricies cant be multiplied");
+            return C;
+        }
+        C= new int [m][y];
+        int result = 0;
+        for (int i= 0 ; i<m ; i++ )
+         {for ( int j= 0 ; j<y ; j++ )
+            { for ( int k= 0 ; k<x ; k++ )
+               {
+                  result = result + A[i][k]*B[k][j];
+               }
+               C[i][j]= result;
+               result = 0;
+               
+            }
+         }
+        System.out.println("Resultant Matrix is:");
+        String l="";
+        for(int i=0; i<m;i++)
+        {for(int j =0 ; j<n ; j++)
+        {
+            
+            l= l+C[i][j]+" ";
+            
+        }
+        System.out.println(l);
+        l="";
+        
+            }
+    return C;
+        
+    }
+    public static int[][] addAB(int a[][],int b[][],int n)
+    {
+         int c[][]=new int[n][n];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                c[i][j]=a[i][j]+b[i][j];
+            }
+        }
+        return c;
+        
+    }
+      public static void INCLUDERAB(int p[][],int res[][],int is,int ie,int js,int je)
+    {
+        for(int i=is,i1=0;i<ie;i++,i1++)
+        {
+            for(int j=is,j1=0;j<je;j++,j1++)
+            {
+                res[i][j]=p[i1][j1];
+            }
+        }
+    }
+     public static int[][] prod(int x[][],int y[][])
+    {
+        int z[][]=new int[2][2];
+        int p,q,r,s,t,u,v;
+        p=(x[0][0]+x[1][1])*(y[0][0]+y[1][1]);
+        q=(x[1][0]+x[1][1])*y[0][0];
+        r=x[0][0]*(y[0][1]-y[1][1]);
+        s=x[1][1]*(y[1][0]-y[0][0]);
+        t=(x[0][0]+x[0][1])*y[1][1];
+        u=(x[1][0]-x[0][0])*(y[0][0]+y[0][1]);
+        v=(x[0][1]-x[1][1])*(y[1][0]+y[1][1]);
+        z[0][0]=p+s-t+v;
+        z[0][1]=r+t;
+        z[1][0]=q+s;
+        z[1][1]=p+r-q+u;
+        return z;
+    }
+     
+    public static int[][] sttmultiplyAB(int A[][],int B[][],int n){
+       
+        int a1[][]=new int[m/2][m/2];
+        int a2[][]=new int[m/2][m/2];
+        int a3[][]=new int[m/2][m/2];
+        int a4[][]=new int[m/2][m/2];
+        int b1[][]=new int[m/2][m/2];
+        int b2[][]=new int[m/2][m/2];
+        int b3[][]=new int[m/2][m/2];
+        int b4[][]=new int[m/2][m/2];
+        for(int i=0;i<m/2;i++)
+        {
+            for(int j=0;j<m/2;j++)
+            {
+                
+                a1[i][j]=A[i][j];
+                b1[i][j]=B[i][j];
+                
+            }
+        }
+        for(int i=0,i1=0;i<m/2;i++,i1++)
+        {
+            for(int j=m/2,j1=0;j<m;j++,j1++)
+            {
+                
+                a2[i1][j1]=A[i][j];
+                b2[i1][j1]=B[i][j];
+                
+            }
+        }
+        for(int i=m/2,i1=0;i<m;i++,i1++)
+        {
+            for(int j=0,j1=0;j<m/2;j++,j1++)
+            {
+                
+                a2[i1][j1]=A[i][j];
+                b2[i1][j1]=B[i][j];
+                
+            }
+        }
+        for(int i=m/2,i1=0;i<m;i++,i1++)
+        {
+            for(int j=m/2,j1=0;j<m;j++,j1++)
+            {
+                
+                a2[i1][j1]=A[i][j];
+                b2[i1][j1]=B[i][j];
+                
+            }
+        }
+            
+        int D[][][]=new int[8][][];
+         D[0]=sttmultiplyAB(a1,b1,n/2);
+        D[1]=sttmultiplyAB(a2,b3,n/2);
+        D[2]=sttmultiplyAB(a1,b2,n/2);
+        D[3]=sttmultiplyAB(a2,b4,n/2);
+        D[4]=sttmultiplyAB(a3,b1,n/2);
+        D[5]=sttmultiplyAB(a4,b2,n/2);
+        D[6]=sttmultiplyAB(a3,b2,n/2);
+        D[7]=sttmultiplyAB(a4,b4,n/2);
+        
+        int partial[][][]=new int[4][][],j=0;
+        for(int i=0;i<7;i++)
+        {
+            partial[j]=addAB(D[i],D[i+1],n/2);
+            j++;
+        }
+        int result[][]=new int[n][n];
+        INCLUDERAB(partial[0],result,0,n/2,0,n/2);
+        INCLUDERAB(partial[1],result,0,n/2,n/2,0);
+        INCLUDERAB(partial[0],result,n/2,n,0,n/2);
+        INCLUDERAB(partial[0],result,n/2,n,n/2,n);
+        return result;
+        
+        
+        
+        
+    }
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
+    
+}
